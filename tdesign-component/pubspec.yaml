@@ -1,11 +1,11 @@
 name: tdesign_flutter
 description: Tencent TDesign UI component library of Flutter, suitable for use in mobile projects.
-version: 0.1.7
+version: 0.1.8
 homepage: https://github.com/Tencent/tdesign-flutter
 
 environment:
-  sdk: ">=2.19.0 <4.0.0"
-  flutter: ">=3.7.0"
+  sdk: '>=2.19.0 <4.0.0'
+  flutter: '>=3.7.0'
 
 dependencies:
   flutter:
@@ -45,7 +45,6 @@ flutter:
     - family: TCloudNumber
       fonts:
         - asset: assets/tdesign/TCloudNumberVF.ttf
-
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
