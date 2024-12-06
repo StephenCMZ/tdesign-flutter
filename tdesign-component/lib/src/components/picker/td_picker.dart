@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../tdesign_flutter.dart';
 
 class TDPicker {
-
   /// 显示时间选择器
   static void showDatePicker(context,
       {required String title,
@@ -39,7 +38,7 @@ class TDPicker {
         context: context,
         backgroundColor: Colors.transparent,
         barrierColor: barrierColor ?? TDTheme.of(context).fontGyColor2.withOpacity(0.6),
-        enableDrag:false,
+        enableDrag: false,
         builder: (context) {
           return TDDatePicker(
               title: title,
@@ -90,6 +89,7 @@ class TDPicker {
         context: context,
         backgroundColor: Colors.transparent,
         barrierColor: barrierColor ?? TDTheme.of(context).fontGyColor2.withOpacity(0.6),
+        enableDrag: false,
         builder: (context) {
           return TDMultiPicker(
             title: title,
@@ -133,6 +133,7 @@ class TDPicker {
         context: context,
         backgroundColor: Colors.transparent,
         barrierColor: barrierColor ?? TDTheme.of(context).fontGyColor2.withOpacity(0.6),
+        enableDrag: false,
         builder: (context) {
           return TDMultiLinkedPicker(
             title: title,
