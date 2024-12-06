@@ -10,15 +10,7 @@ class TDItemWidget extends StatefulWidget {
   final double itemHeight;
   final ItemDistanceCalculator? itemDistanceCalculator;
 
-
-  const TDItemWidget(
-      {required this.fixedExtentScrollController,
-      required this.index,
-      required this.content,
-      required this.itemHeight,
-      this.itemDistanceCalculator,
-      Key? key})
-      : super(key: key);
+  const TDItemWidget({required this.fixedExtentScrollController, required this.index, required this.content, required this.itemHeight, this.itemDistanceCalculator, Key? key}) : super(key: key);
 
   @override
   _TDItemWidgetState createState() => _TDItemWidgetState();
@@ -40,24 +32,32 @@ class _TDItemWidgetState extends State<TDItemWidget> {
   }
 
   @override
+  didUpdateWidget(oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    /// 子项重新注册滚动监听，避免更新后丢失
+    if (listener != null) {
+      widget.fixedExtentScrollController.removeListener(listener!);
+    } else {
+      listener = () => setState(() {});
+    }
+    widget.fixedExtentScrollController.addListener(listener!);
+  }
+
+  @override
   Widget build(BuildContext context) {
     /// 子项此时离中心的距离
     /// 不要使用widget.fixedExtentScrollController.selectedItem
     /// 其中selectedItem会报错，原因是一开始minScrollExtent为空
-    var distance =
-        (widget.fixedExtentScrollController.offset / widget.itemHeight -
-                widget.index)
-            .abs()
-            .toDouble();
+    var distance = (widget.fixedExtentScrollController.offset / widget.itemHeight - widget.index).abs().toDouble();
     _itemDistanceCalculator ??= ItemDistanceCalculator();
     return TDText(widget.content,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
-          fontWeight: _itemDistanceCalculator!.calculateFontWeight(context, distance),
-          fontSize: _itemDistanceCalculator!.calculateFont(context, distance),
-          color: _itemDistanceCalculator!.calculateColor(context, distance)
-        ));
+            fontWeight: _itemDistanceCalculator!.calculateFontWeight(context, distance),
+            fontSize: _itemDistanceCalculator!.calculateFont(context, distance),
+            color: _itemDistanceCalculator!.calculateColor(context, distance)));
   }
 
   @override
