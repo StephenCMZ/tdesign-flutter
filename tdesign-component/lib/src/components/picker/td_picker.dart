@@ -40,30 +40,33 @@ class TDPicker {
         barrierColor: barrierColor ?? TDTheme.of(context).fontGyColor2.withOpacity(0.6),
         enableDrag: false,
         builder: (context) {
-          return TDDatePicker(
-              title: title,
-              onConfirm: onConfirm,
-              onCancel: onCancel,
-              rightText: rightText,
-              leftText: leftText,
-              leftTextStyle: leftTextStyle,
-              centerTextStyle: centerTextStyle,
-              rightTextStyle: rightTextStyle,
-              titleDividerColor: titleDividerColor,
-              model: DatePickerModel(
-                useYear: useYear,
-                useMonth: useMonth,
-                useDay: useDay,
-                useWeekDay: useWeekDay,
-                useHour: useHour,
-                useMinute: useMinute,
-                useSecond: useSecond,
-                dateStart: dateStart,
-                dateEnd: dateEnd!,
-                dateInitial: initialDate,
-              ),
-              pickerHeight: pickerHeight,
-              pickerItemCount: pickerItemCount);
+          return GestureDetector(
+            onTap: () => {},
+            child: TDDatePicker(
+                title: title,
+                onConfirm: onConfirm,
+                onCancel: onCancel,
+                rightText: rightText,
+                leftText: leftText,
+                leftTextStyle: leftTextStyle,
+                centerTextStyle: centerTextStyle,
+                rightTextStyle: rightTextStyle,
+                titleDividerColor: titleDividerColor,
+                model: DatePickerModel(
+                  useYear: useYear,
+                  useMonth: useMonth,
+                  useDay: useDay,
+                  useWeekDay: useWeekDay,
+                  useHour: useHour,
+                  useMinute: useMinute,
+                  useSecond: useSecond,
+                  dateStart: dateStart,
+                  dateEnd: dateEnd!,
+                  dateInitial: initialDate,
+                ),
+                pickerHeight: pickerHeight,
+                pickerItemCount: pickerItemCount),
+          );
         });
   }
 
